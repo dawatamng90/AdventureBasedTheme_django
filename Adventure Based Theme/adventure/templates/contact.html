@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+ <!---Contact Section Start---->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1>If you need,Just drop us a line.</h1>
+                    <p>Who are in extremely love in eco friendly system?</p>
+                </div>
+            </div>
+            <form method="post" action="{% url 'saveform' %}">
+            {% csrf_token %}
+                <div class="row form-outer">
+                    <div class="col-lg-6 form-group">
+                        <input type="text" placeholder="Enter your name" name=" " class="form-control" />
+                        <input type="email" placeholder="Enter your email" name=" " class="form-control" />
+                        <input type="text" placeholder="Enter the subject" name=" " class="form-control" />
+                    </div>
+                    <div class="col-lg-6">
+                        <textarea class="form-control" placeholder="Message"></textarea>
+                        <button class="btn btn-primary">Send Message <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!----Contact Section End---->
+
+{% endblock  %}

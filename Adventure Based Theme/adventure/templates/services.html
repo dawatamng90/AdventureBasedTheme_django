@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+       <!---Features start---->
+    <section class="feature-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1>Some Features that Made us Unique</h1>
+                    <p>Who are in extremely love in eco friendly system?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container single">
+        <div class="row">
+                <div class="col-12">
+                    <form method="get">
+                        <input type="text" name="servicename" value=""/>
+                        <input type="submit" value="Search"/>
+                    </form><br>
+                </div>
+            {% for n in servicesData %}
+            <div class="col-lg-4">
+                <div class="single-feature">
+                    <h5>{{ n.service_title | safe }}</h5>
+                    <p>{{ n.service_des | safe  }}</p>
+                </div>
+            </div>
+            {% empty %}
+                No Data found
+            {% endfor %}
+            
+        </div>
+        <nav aria-label="...">
+            <ul class="pagination">
+                {% if servicesData.has_previous %}
+                <li class="page-item ">
+                <a class="page-link" href="/services/?page=1" tabindex="-1">First</a>
+                </li>
+                <li class="page-item">
+                <a class="page-link" href="/services/?page={{serviceData.previous_page_number}}" tabindex="-1">Previous</a>
+                </li>
+                {% endif %}
+                {% for n in totalPagelist%}
+                <li class="page-item"> <a class="page-link" href="/services/?page={{n}}">{{n}}</a></li> 
+                {% endfor %}
+                {% if servicesData.has_next %}
+                <li class="page-item">
+                <a class="page-link" href="/services/?page={{serviceData.next_page_number}}">Next</a>
+                </li>
+                <li class="page-item">
+                <a class="page-link" href="/services/?page={{lastpage}}">Last</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    <!---Features end---->
+
+{% endblock %}
